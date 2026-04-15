@@ -1,0 +1,11 @@
+[project]
+name = "docs_ocr"
+version = "0.1.0"
+description = "MVP pipeline for OCR-based FIO extraction from document images"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

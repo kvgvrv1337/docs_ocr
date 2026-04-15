@@ -1,0 +1,52 @@
+# Git / metadata
+.git/
+.gitignore
+
+# Python cache / virtualenvs
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+ENV/
+
+# Local tooling caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Local env and editor files
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+tmp/
+temp/
+*.tmp
+
+# Keep image context lean
+data/
+*.png
+*.jpg
+*.jpeg
+artifacts/
+runs/
+checkpoints/
+
+# Local docs not needed in runtime image
+architecture.md
