@@ -12,7 +12,8 @@ def test_ocr_provider_extracts_expected_owner_block_from_test3() -> None:
     from src.providers.ocr_provider import OCRProvider
 
     image_path = Path("data/test3.png")
-    assert image_path.exists(), f"Missing test image: {image_path}"
+    if not image_path.exists():
+        pytest.skip(f"Missing integration test image: {image_path}")
 
     with Image.open(image_path) as image:
         image_rgb = np.asarray(image.convert("RGB"), dtype=np.uint8)

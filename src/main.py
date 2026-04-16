@@ -11,8 +11,6 @@ from PIL import Image
 from src.core.schemas import ImageRGB, PipelineResult
 from src.core.services.extraction_service import ExtractionService
 from src.core.services.ocr_service import OCRService
-from src.providers.extraction_provider import ExtractionProvider
-from src.providers.ocr_provider import OCRProvider
 
 
 class OCRPipelineApp:
@@ -145,6 +143,9 @@ def run_cli(
 
 
 def main() -> int:
+    from src.providers.extraction_provider import ExtractionProvider
+    from src.providers.ocr_provider import OCRProvider
+
     ocr_service = OCRProvider()
     extraction_service = ExtractionProvider()
     run_cli(ocr_service=ocr_service, extraction_service=extraction_service)
