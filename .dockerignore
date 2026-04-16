@@ -47,6 +47,7 @@ data/
 artifacts/
 runs/
 checkpoints/
+models/
 
 # Local docs not needed in runtime image
 architecture.md
