@@ -5,6 +5,11 @@
     "revision": "7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65"
   },
   "models": {
+    "ocr_det_v3": {
+      "file_name": "ocr_det_v3.onnx",
+      "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/detection/v3/det.onnx",
+      "sha256": "ee40e80071ba3a320d4efda75f3e22047a7d049e9bf7bcaaf9daea23fc21b935"
+    },
     "ocr_det_v5": {
       "file_name": "ocr_det_v5.onnx",
       "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/detection/v5/det.onnx",
@@ -19,6 +24,21 @@
       "file_name": "ocr_rec_eslav_v5_dict.txt",
       "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/languages/eslav/dict.txt",
       "sha256": "3e95f1581557162870cacdba5af91a4c6be2890710d395b0c3c7578e7ee5e6eb"
+    },
+    "ocr_angle_cls_v2": {
+      "file_name": "ocr_angle_cls_v2.onnx",
+      "url": "https://huggingface.co/SWHL/RapidOCR/resolve/main/PP-OCRv1/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+    },
+    "ocr_doc_unwarping": {
+      "file_name": "ocr_doc_unwarping.onnx",
+      "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/preprocessing/doc-unwarping/UVDoc.onnx",
+      "sha256": "3f5ec09f1c6c5947ae7cc8db93ed7dd6dd2d164d3d99a6a70387c98848cfb00c"
+    },
+    "ocr_textline_orientation": {
+      "file_name": "ocr_textline_orientation.onnx",
+      "url": "https://huggingface.co/monkt/paddleocr-onnx/resolve/7b02d0a30a07ba2b92ad1ff5a8941ae2c633de65/preprocessing/textline-orientation/PP-LCNet_x1_0_textline_ori.onnx",
+      "sha256": "34ec07c0bcd591da2ae6651924a1d8fb85f7ca60ac9a58ac417ecf12a5fc1e1a"
     }
   }
 }
