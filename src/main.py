@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 import numpy as np
 from PIL import Image
@@ -11,6 +11,8 @@ from PIL import Image
 from src.core.schemas import ImageRGB, PipelineResult
 from src.core.services.extraction_service import ExtractionService
 from src.core.services.ocr_service import OCRService
+from src.providers.extraction_provider import ExtractionProvider
+from src.providers.ocr_provider import OCRProvider
 
 
 class OCRPipelineApp:
@@ -98,25 +100,34 @@ class OCRPipelineApp:
         return source.with_suffix(".json")
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="OCR pipeline skeleton")
-    parser.add_argument("image_path", help="Input image path")
-    parser.add_argument("--output", help="Output JSON path")
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="OCR pipeline entrypoint")
+    parser.add_argument(
+        "--input_path",
+        required=True,
+        help="Input image path",
+    )
+    parser.add_argument(
+        "--output_path",
+        help="Output JSON path (defaults to <input>.json)",
+    )
     parser.add_argument(
         "--max-side",
+        "--max_side",
+        dest="max_side",
         type=int,
         default=2500,
         help="Max image side for downsampling (set <=0 to disable)",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def run_cli(
     ocr_service: OCRService,
     extraction_service: ExtractionService,
-) -> Path:
+) -> PipelineResult:
     """
-    CLI facade 
+    CLI facade.
     """
     args = parse_args()
     max_side = args.max_side if args.max_side > 0 else None
@@ -126,10 +137,19 @@ def run_cli(
         extraction_service=extraction_service,
         max_side=max_side,
     )
-    return app.run_and_save(args.image_path, args.output)
+    result = app.run(args.input_path)
+    output_path = args.output_path or app.default_output_path(args.input_path)
+    app.save_output(result, output_path)
+    print(json.dumps(result.to_output_dict(), ensure_ascii=False))
+    return result
+
+
+def main() -> int:
+    ocr_service = OCRProvider()
+    extraction_service = ExtractionProvider()
+    run_cli(ocr_service=ocr_service, extraction_service=extraction_service)
+    return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(
-        "Wire concrete providers and call run_cli(ocr_service, extraction_service)."
-    )
+    raise SystemExit(main())
