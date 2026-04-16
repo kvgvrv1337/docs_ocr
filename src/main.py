@@ -116,9 +116,7 @@ def run_cli(
     extraction_service: ExtractionService,
 ) -> Path:
     """
-    CLI facade that still uses dependency injection.
-
-    Providers should be created by composition root and passed in.
+    CLI facade 
     """
     args = parse_args()
     max_side = args.max_side if args.max_side > 0 else None

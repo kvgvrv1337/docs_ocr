@@ -17,13 +17,10 @@ docs_ocr/
         ocr_service.py       # интерфейс OCR-сервиса (поведение/сигнатуры)
         extraction_service.py# интерфейс extraction-сервиса (поведение/сигнатуры)
       schemas.py             # DTO контракты
-    infra/
-      model_store.py         # загрузка, checksum-проверка и кэширование моделей
     providers/
       ocr_provider.py       # OCR-реализация + preprocessing внутри
       extraction_provider.py# Реализация извлечения сущностей
   main.py                    # оркестрация: image -> OCR -> extraction -> JSON
-  models.manifest.json       # версия и checksum моделей для загрузки в ModelStore
   pyproject.toml
   uv.lock
   README.md

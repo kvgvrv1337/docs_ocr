@@ -5,11 +5,11 @@ description = "MVP pipeline for OCR-based FIO extraction from document images"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "easyocr>=1.7.2",
     "ipykernel>=6.29.5",
     "matplotlib>=3.10.1",
     "paddleocr>=3.4.1",
     "paddlepaddle==3.2.2",
+    "pytest>=9.0.3",
 ]
 
 [build-system]

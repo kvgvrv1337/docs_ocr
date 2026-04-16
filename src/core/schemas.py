@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Optional
+import numpy as np
+from numpy.typing import NDArray
 
+
+ImageRGB = NDArray[np.uint8]
 
 @dataclass(slots=True)
 class OCRResult:
