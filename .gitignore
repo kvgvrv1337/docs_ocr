@@ -51,6 +51,9 @@ data/
 *.jpg
 *.jpeg
 
+# Output data
+outputs/
+
 # Model / experiment artifacts (optional local outputs)
 artifacts/
 runs/

@@ -7,7 +7,7 @@
 - Python 3.11+
 - `uv`
 
-## Настройка среды
+## Настройка среды (быстрый CI-safe вариант)
 
 Из корня проекта выполните:
 
@@ -17,8 +17,9 @@ uv sync --frozen --no-dev --group test --no-install-project
 ```
 
 Команда установит:
-- основные зависимости проекта (`[project].dependencies`);
-- зависимости для тестов (`[dependency-groups].test`), включая `pytest`.
+- базовые зависимости проекта (`[project].dependencies`);
+- зависимости группы `test` (`pytest`, `ruff`);
+- без тяжелых OCR-зависимостей (`paddleocr`, `paddlepaddle`).
 
 ## Активация окружения
 
@@ -36,18 +37,28 @@ source .venv/bin/activate
 
 ## Запуск тестов
 
-Запуск всего набора:
-
-```bash
-pytest
-```
-
 Запуск только CI-safe теста с мокнутым OCR (без реального инференса):
 
 ```bash
 pytest tests/test_application.py::test_application_run_and_save_with_stubbed_ocr
 ```
 
+Запуск линтера (как в CI):
+
+```bash
+ruff check src tests
+ruff format --check tests
+```
+
+## Полный прогон тестов с OCR
+
+Если хотите запускать OCR-тесты локально (не только CI-safe), установите дополнительно группу `ocr`:
+
+```bash
+uv sync --frozen --no-dev --group test --group ocr --no-install-project
+pytest
+```
+
 Примечания:
 - тесты, которые используют реальные изображения, могут быть пропущены при отсутствии файлов в `data/`;
-- для OCR-тестов также нужны модели PaddleOCR (первый запуск может занять время из-за загрузки).
+- OCR-тесты и CLI-прогон с реальным OCR требуют `paddleocr/paddlepaddle` и могут скачивать модели при первом запуске.

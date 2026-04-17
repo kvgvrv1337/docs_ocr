@@ -17,8 +17,8 @@ uv sync --frozen --no-dev --group research --no-install-project
 ```
 
 Команда установит:
-- основные зависимости проекта (`[project].dependencies`);
-- зависимости для исследований (`[dependency-groups].research`), включая `ipykernel` и `matplotlib`.
+- базовые зависимости проекта (`[project].dependencies`);
+- зависимости для исследований (`[dependency-groups].research`), включая `ipykernel`, `matplotlib` и OCR-стек (`paddleocr`, `paddlepaddle`).
 
 ## Активация окружения
 
@@ -36,5 +36,5 @@ source .venv/bin/activate
 
 ## Запуск ноутбука
 
-Откройте `notebooks/research.ipynb` в вашей IDE и выберите созданную среду `.venv`
+Выберите созданную среду `.venv`
 в качестве ядра (kernel) для выполнения ячеек.

@@ -88,7 +88,9 @@ class OCRPipelineApp:
     ) -> Path:
         """Run pipeline and save output JSON."""
         result = self.run(image_path)
-        target = Path(output_path) if output_path else self.default_output_path(image_path)
+        target = (
+            Path(output_path) if output_path else self.default_output_path(image_path)
+        )
         return self.save_output(result, target)
 
     @staticmethod

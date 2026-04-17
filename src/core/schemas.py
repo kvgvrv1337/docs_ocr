@@ -8,6 +8,7 @@ from numpy.typing import NDArray
 
 ImageRGB = NDArray[np.uint8]
 
+
 @dataclass(slots=True)
 class OCRResult:
     """Text extracted from image by OCR provider."""
@@ -38,5 +39,3 @@ class PipelineResult:
             "имя": self.fio.name,
             "отчество": self.fio.patronymic,
         }
-
-

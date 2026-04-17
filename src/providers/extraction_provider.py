@@ -36,6 +36,7 @@ STOPWORDS = {
     "ОТМЕТКИ",
 }
 
+
 @dataclass(slots=True)
 class ExtractionProviderSettings:
     """Runtime-tunable parameters for rule-based FIO extraction."""
