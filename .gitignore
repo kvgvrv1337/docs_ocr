@@ -46,7 +46,7 @@ temp/
 *.tmp
 
 # Input data / images
-data/
+data/*
 *.png
 *.jpg
 *.jpeg
