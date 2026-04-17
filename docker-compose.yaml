@@ -1,0 +1,18 @@
+services:
+  docs-ocr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: docs-ocr
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - paddlex-cache:/root/.paddlex
+      - paddle-cache:/root/.cache/paddle
+    command: ["--help"]
+
+volumes:
+  paddlex-cache:
+  paddle-cache:
