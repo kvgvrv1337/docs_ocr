@@ -20,6 +20,7 @@ LOOKALIKE_CYRILLIC = "АВСЕНКМОРТХУавсенкмортху"
 LOOKALIKE_MAP = str.maketrans(LOOKALIKE_LATIN, LOOKALIKE_CYRILLIC)
 
 STOPWORDS = {
+    "СОБСТВЕННИК",
     "РЕСПУБЛИКА",
     "КРАЙ",
     "ОБЛАСТЬ",
@@ -69,13 +70,13 @@ class ExtractionProvider(ExtractionService):
             surname, name, patronymic = primary_tokens[:3]
             return self._build_fio(surname=surname, name=name, patronymic=patronymic)
 
-        # Fallback requested by product: collect 3 words starting from name token.
+        # Fallback: take first 3 filtered tokens as Фамилия Имя Отчество.
         fallback_tokens = self._collect_tokens(lines)
         fallback_triplet = self._fallback_from_name(fallback_tokens)
         if fallback_triplet is None:
             return FIOResult()
 
-        name, patronymic, surname = fallback_triplet
+        surname, name, patronymic = fallback_triplet
         return self._build_fio(surname=surname, name=name, patronymic=patronymic)
 
     def _find_anchor(self, lines: Sequence[str]) -> tuple[int | None, float]:

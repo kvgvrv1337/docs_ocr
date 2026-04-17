@@ -27,3 +27,24 @@ def test_extraction_provider_extracts_expected_fio() -> None:
         name="Максим",
         patronymic="Юрьевич",
     )
+
+
+def test_extraction_provider_fallback_keeps_surname_name_patronymic_order() -> None:
+    text = "\n".join(
+        [
+            "12345",
+            "ИВАНОВ",
+            "ИВАН",
+            "ПЕТРОВИЧ",
+            "СОБСТВЕННИК",
+        ]
+    )
+
+    provider = ExtractionProvider()
+    result = provider.extract_fio(text)
+
+    assert result == FIOResult(
+        surname="Иванов",
+        name="Иван",
+        patronymic="Петрович",
+    )
